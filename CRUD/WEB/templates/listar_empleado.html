@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar Empleados</title>
+</head>
+<body>
+    <h1>Listar Empleados</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Edad</th>
+            <th>Género</th>
+            <th>Salario</th>
+            <th>Fecha de Registro</th>
+            <th>Última Modificación</th>
+            <th>Acciones</th>
+        </tr>
+        {% for empleado in empleados %}
+        <tr>
+            <td>{{ empleado.nombre_empleado }}</td>
+            <td>{{ empleado.apellido_empleado }}</td>
+            <td>{{ empleado.email_empleado }}</td>
+            <td>{{ empleado.edad_empleado }}</td>
+            <td>{{ empleado.get_genero_empleado_display }}</td>
+            <td>{{ empleado.salario_empleado }}</td>
+            <td>{{ empleado.fecha_registro }}</td>
+            <td>{{ empleado.ultima_modificacion }}</td>
+            <td>
+                <a href="{% url 'actualizar_empleado' id=empleado.id %}">
+                    <button>Actualizar</button>
+                </a>
+                <a href="{% url 'eliminar_empleado' id=empleado.id %}">
+                    <button>Eliminar</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
