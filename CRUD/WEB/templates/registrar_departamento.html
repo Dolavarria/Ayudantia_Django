@@ -1,0 +1,12 @@
+
+<div>
+    <a href="/">Registrar Empleado</a> |
+    <a href="/listar/">Listar Empleados</a> |
+    <a href="/registrar_departamento/">Registrar Departamento</a> |
+    <a href="/listar_departamento/">Listar Departamentos</a>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Registrar</button>
+</form>

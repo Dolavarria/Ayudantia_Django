@@ -1,0 +1,31 @@
+
+<div>
+    <a href="/">Registrar Empleado</a> |
+    <a href="/listar/">Listar Empleados</a> |
+    <a href="/registrar_departamento/">Registrar Departamento</a> |
+    <a href="/listar_departamento/">Listar Departamentos</a>
+</div>
+  
+  <h2>Lista de Departamentos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre del Departamento</th>
+        <th>Ubicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for departamento in departamentos %}
+        <tr>
+           <td>{{ departamento.id }}</td>
+          <td>{{ departamento.nombre_departamento }}</td>
+          <td>{{ departamento.ubicacion }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="2">No hay departamentos registrados.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>

@@ -1,6 +1,18 @@
 from django.db import models
 
 # Create your models here.
+#Crearemos una nueva tabla para aplicar FK
+class Departamento(models.Model):
+    nombre_departamento = models.CharField(max_length=200)
+    ubicacion= models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.nombre_departamento
+        #retorna el nombre del departamento
+
+
+
+
 GENERO_OPCIONES = (
     ('masculino', 'Masculino'),
     ('femenino', 'Femenino'),
@@ -25,3 +37,9 @@ class Empleado(models.Model):
         #Fecha de registro, se establece automaticamente en fecha y hora actual al crear un registro
         ultima_modificacion = models.DateTimeField(auto_now=True)
         #Ultima modificación, se establece automaticamente en fecha y hora actual al modificar un registro
+        
+        #para vincular la tabla Departamento con la tabla Empleado
+        departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
+        #django identifica que la tabla Departamento es la tabla padre y la tabla Empleado es la tabla hija
+        #on_delete=models.CASCADE, si se elimina un registro de la tabla padre, se eliminan todos los registros de la tabla hija
+        #django por si solo identifica cual es la primary key de la tabla padre y la vincula con la tabla hija
